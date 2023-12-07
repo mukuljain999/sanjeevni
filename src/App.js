@@ -1,12 +1,24 @@
-import './App.css';
+
+
 import { Footer } from './components/Footer';
+
+
+
+//import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import './App.css';
+import { NavigationBar } from './components/NavigationBar';
 
 function App() {
   return (
-    <div className="App">
-      <h1>This is edited by Neeraj.</h1>
-            <Footer/>
-    </div>
+    <BrowserRouter>
+      <NavigationBar></NavigationBar>
+      <Routes>
+      
+      </Routes>
+      <Footer/>
+    </BrowserRouter>
+
   );
 }
 

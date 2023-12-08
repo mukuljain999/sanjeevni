@@ -6,7 +6,7 @@ import { Container, Row, Col, Card } from 'react-bootstrap';
 import '../css/Aboutus.css'
 import aboutusgif from "../images/aboutus.webp"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faYoutube, faLinkedin, faFacebook, faXTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import {  faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
 export const AboutUs = () => {
     return (
         <Container className='body'>
@@ -96,7 +96,7 @@ export const AboutUs = () => {
                     <h1>Our Leaders</h1>
                 </Col>
             </Row>
-            <Row  >
+            <Row className="mb-5">
                 <Col lg={4}>
                     <Card style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={neeraj} className="photo"/>
@@ -158,6 +158,3 @@ export const AboutUs = () => {
 
 export default AboutUs;
 
-const gifstyling = {
-
-}

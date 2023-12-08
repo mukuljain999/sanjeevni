@@ -19,7 +19,7 @@ function App() {
       <NavigationBar></NavigationBar>
       <Routes>
         
-        <Route path="/aboutus" element={<AboutUs />}></Route>
+        <Route path="/about-us" element={<AboutUs />}></Route>
         
       </Routes>
       

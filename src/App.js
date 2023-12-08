@@ -7,7 +7,11 @@ import { Footer } from './components/Footer';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
 import { NavigationBar } from './components/NavigationBar';
+
+import { AboutUs } from './components/AboutUs.jsx';
+
 import ContactUs from './components/ContactUs.jsx'
+
 
 
 function App() {
@@ -19,10 +23,16 @@ function App() {
 
       <NavigationBar></NavigationBar>
       <Routes>
+
         <Route path="/contact-us" element={<ContactUs/>}></Route>
+        <Route path="/aboutus" element={<AboutUs />}></Route>
+        
       </Routes>
-      <Footer />
-    </BrowserRouter>
+      
+     
+      <Footer/>
+
+      </BrowserRouter>
 
 
   );

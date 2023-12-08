@@ -20,7 +20,7 @@ export function NavigationBar() {
                         <LinkContainer to="/about-us">
                             <Nav.Link>About</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/">
+                        <LinkContainer to="/contact-us">
                             <Nav.Link>Contact</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/">

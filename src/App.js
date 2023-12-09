@@ -1,12 +1,7 @@
-
-import Carousels from './components/Carousels';
-
-import { Footer } from './components/Footer';
-
-//import logo from './logo.svg';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
-import { NavigationBar } from './components/NavigationBar';
+import {NavigationBar} from './components/NavigationBar';
+import { Home } from './components/Home';
 
 import { AboutUs } from './components/AboutUs.jsx';
 
@@ -27,10 +22,11 @@ function App() {
 
 
 
+
       <NavigationBar></NavigationBar>
       <Routes>
 
-
+        <Route path="/" element={<Home />}></Route>
         <Route path="/about-us" element={<AboutUs />}></Route>
         <Route path="/contact-us" element={<ContactUs />}></Route>
         <Route path="/log-in" element={<Login />}></Route>
@@ -44,8 +40,6 @@ function App() {
       <Footer />
 
     </BrowserRouter>
-
-
   );
 }
 export default App;

@@ -11,6 +11,9 @@ import { NavigationBar } from './components/NavigationBar';
 import { AboutUs } from './components/AboutUs.jsx';
 
 import ContactUs from './components/ContactUs.jsx'
+import Login from './components/LogIn.jsx';
+import DonorRegistration from './components/DonorRegistration.jsx';
+
 
 
 
@@ -24,19 +27,22 @@ function App() {
       <NavigationBar></NavigationBar>
       <Routes>
 
-        
+
         <Route path="/about-us" element={<AboutUs />}></Route>
+        <Route path="/contact-us" element={<ContactUs />}></Route>
+        <Route path="/log-in" element={<Login />}></Route>
+        <Route path="/register" element={<DonorRegistration/>} />
 
 
-        <Route path="/contact-us" element={<ContactUs/>}></Route>
-        
-        
+
+
+
       </Routes>
-      
-     
-      <Footer/>
 
-      </BrowserRouter>
+
+      <Footer />
+
+    </BrowserRouter>
 
 
   );

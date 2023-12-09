@@ -11,8 +11,11 @@ import { NavigationBar } from './components/NavigationBar';
 import { AboutUs } from './components/AboutUs.jsx';
 
 import ContactUs from './components/ContactUs.jsx'
+
 import Login from './components/LogIn.jsx';
 import DonorRegistration from './components/DonorRegistration.jsx';
+
+import DonateBlood from './components/DonateBlood.jsx';
 
 
 
@@ -32,10 +35,8 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />}></Route>
         <Route path="/log-in" element={<Login />}></Route>
         <Route path="/register" element={<DonorRegistration/>} />
-
-
-
-
+        <Route path="/donate-blood" element={<DonateBlood/>}></Route>
+        
 
       </Routes>
 

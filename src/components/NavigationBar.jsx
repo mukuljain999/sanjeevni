@@ -26,7 +26,7 @@ export function NavigationBar() {
                         <LinkContainer to="/log-in">
                             <Nav.Link>Login</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/">
+                        <LinkContainer to="/donate-blood">
                             <Nav.Link>Donate Blood</Nav.Link>
                         </LinkContainer>
                     </Nav>

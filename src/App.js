@@ -11,6 +11,7 @@ import { NavigationBar } from './components/NavigationBar';
 import { AboutUs } from './components/AboutUs.jsx';
 
 import ContactUs from './components/ContactUs.jsx'
+import DonateBlood from './components/DonateBlood.jsx';
 
 
 
@@ -29,7 +30,7 @@ function App() {
 
 
         <Route path="/contact-us" element={<ContactUs/>}></Route>
-        
+        <Route path="/donate-blood" element={<DonateBlood/>}></Route>
         
       </Routes>
       

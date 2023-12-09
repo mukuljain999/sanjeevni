@@ -2,27 +2,51 @@ import React, { useState } from 'react';
 import { Form, Row, Button, Container, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/LogIn.css';
+import { useNavigate } from 'react-router-dom';
+import { donorLogin } from '../Services/DonorService';
+import { adminLogin } from '../Services/AdminService';
+
 
 
 function LogIn() {
-    const [isAdmin, setIsAdmin] = useState(false);
+
 
     const handleSwitchToggle = () => {
         setIsAdmin(!isAdmin);
     };
 
-    const handleNormalSubmit = (e) => {
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [isAdmin, setIsAdmin] = useState(false);
+    const [loginError, setLoginError] = useState(false);
+
+    const handleInputChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    }
+
+    const handleDonorSubmit = async (e) => {
         e.preventDefault();
-        alert('Login button clicked for normal section!');
+        try {
+            const result = await donorLogin(formData);
+            console.log(result);
+            localStorage.setItem("token", result.token);
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+            setLoginError(true);
+        }
     };
 
-    const handleAdminSubmit = (e) => {
+    const handleAdminSubmit = async (e) => {
         e.preventDefault();
-        alert('Login button clicked for admin section!');
-    };
-
-    const handleRegister = () => {
-
+        try {
+            const result = await adminLogin(formData);
+            localStorage.setItem("token", result.token);
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+            setLoginError(true);
+        }
     };
 
     return (
@@ -41,21 +65,25 @@ function LogIn() {
             </div>
 
             <div className="login-container">
-                <Form className="login-form" onSubmit={isAdmin ? handleAdminSubmit : handleNormalSubmit}>
+                <Form className="login-form" onSubmit={isAdmin ? handleAdminSubmit : handleDonorSubmit}>
                     <Row>
                         <Form.Group controlId="formName" className="mb-3">
                             <Form.Label className="loginLabel">Email</Form.Label>
-                            <Form.Control type="text" placeholder="Enter your email" />
+                            <Form.Control type="text" placeholder="Enter your email" name="email"
+                                value={formData.email}
+                                onChange={handleInputChange} />
                         </Form.Group>
                     </Row>
 
                     <Row>
                         <Form.Group controlId="formPassword" className="mb-3">
                             <Form.Label className="loginLabel">Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" placeholder="Password" name="password"
+                                value={formData.password}
+                                onChange={handleInputChange} />
                         </Form.Group>
                     </Row>
-                    <Button variant="danger" type="submit">{isAdmin ? 'Login' : 'Login'}
+                    <Button variant="danger" type="submit">{isAdmin ? 'Admin Login' : 'Login'}
                     </Button>
                     <a href='#'>Forgotten password?</a>
                     <div className='registerRedirect'>
@@ -73,7 +101,6 @@ function LogIn() {
 
     );
 }
-
 
 
 export default LogIn;

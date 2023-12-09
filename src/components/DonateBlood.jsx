@@ -52,7 +52,7 @@ const DonateBlood = () => {
 
                                 </Form.Group>
                                 {/* More form fields */}
-                                <Button variant="primary" type="submit" className='btn'>
+                                <Button variant="primary" type="submit" className='donateBloodBtn'>
                                     Submit
                                 </Button>
                             </Form>

@@ -6,7 +6,7 @@ import { Home } from './components/Home';
 import { AboutUs } from './components/AboutUs.jsx';
 
 import ContactUs from './components/ContactUs.jsx'
-
+import { Footer } from "./components/Footer.jsx";
 import Login from './components/LogIn.jsx';
 import DonorRegistration from './components/DonorRegistration.jsx';
 

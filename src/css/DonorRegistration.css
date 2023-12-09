@@ -1,0 +1,62 @@
+/* Add your styles here */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.registration-container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.registration-form {
+    display: block;
+    padding: 5rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+    border-radius: 1rem;
+}
+
+
+.login-container {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registrationLabel {
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+
+.login-form a {
+    display: block;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.login-form button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.registerRedirect {
+    border-top: 1px solid black;
+    padding: 1rem;
+}
+
+.registerRedirect p,
+.registerRedirect button {
+    margin: 0.2rem;
+}

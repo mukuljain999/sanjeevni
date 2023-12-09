@@ -8,7 +8,7 @@ export function NavigationBar() {
                 <img
                     src={logoimg}
                     width="50"
-                    height="50"></img>
+                    height="50" alt='oops! Not found'></img>
                 <Navbar.Brand href="#home">Sanjeevani</Navbar.Brand> 
                 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -17,16 +17,16 @@ export function NavigationBar() {
                         <LinkContainer to="/">
                             <Nav.Link>Home</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/">
+                        <LinkContainer to="/about-us">
                             <Nav.Link>About</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/">
+                        <LinkContainer to="/contact-us">
                             <Nav.Link>Contact</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/">
+                        <LinkContainer to="/log-in">
                             <Nav.Link>Login</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/">
+                        <LinkContainer to="/donate-blood">
                             <Nav.Link>Donate Blood</Nav.Link>
                         </LinkContainer>
                     </Nav>

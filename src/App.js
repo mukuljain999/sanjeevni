@@ -3,14 +3,42 @@ import './App.css';
 import {NavigationBar} from './components/NavigationBar';
 import { Home } from './components/Home';
 
+import { AboutUs } from './components/AboutUs.jsx';
+
+import ContactUs from './components/ContactUs.jsx'
+
+import Login from './components/LogIn.jsx';
+import DonorRegistration from './components/DonorRegistration.jsx';
+
+import DonateBlood from './components/DonateBlood.jsx';
+
+
+
 
 function App() {
   return (
     <BrowserRouter>
-    <NavigationBar></NavigationBar>
-    <Routes>
-    <Route path="/" element={<Home />}></Route>
-    </Routes>
+
+
+
+
+
+      <NavigationBar></NavigationBar>
+      <Routes>
+
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about-us" element={<AboutUs />}></Route>
+        <Route path="/contact-us" element={<ContactUs />}></Route>
+        <Route path="/log-in" element={<Login />}></Route>
+        <Route path="/register" element={<DonorRegistration/>} />
+        <Route path="/donate-blood" element={<DonateBlood/>}></Route>
+        
+
+      </Routes>
+
+
+      <Footer />
+
     </BrowserRouter>
   );
 }

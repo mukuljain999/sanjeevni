@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Row, Button, Col } from 'react-bootstrap';
-// import { saveDonor } from '../Services/DonorService';
+import { saveDonor } from '../Services/DonorService';
 
 const DonorRegistration = () => {
     const [formData, setFormData] = useState({
@@ -31,35 +31,34 @@ const DonorRegistration = () => {
     };
 
     const handleSubmit = async (event) => {
-        // event.preventDefault(); // for submission without reloading the page
-        // try {
-        //     const result = await saveDonor(formData);
-        //     setFormData({
-        //         name: '',
-        //         email: '',
-        //         password: '',
-        //         gender: '',
-        //         dateOfBirth: '',
-        //         state: '',
-        //         district: '',
-        //         city: '',
-        //         pincode: '',
-        //         phoneNumber: '',
-        //         bloodGroup: '',
-        //     });
-        //     setIsSubmitted(true);
-        //     setTimeout(() => {
-        //         setIsSubmitted(false);
-        //     }, 1500);
-        //     console.log(result.message);
-        // }
+        event.preventDefault(); // for submission without reloading the page
+        try {
+          const result = await saveDonor(formData);
+          setFormData({
+                name: '',
+                email: '',
+                password: '',
+                gender: '',
+                dateOfBirth: '',
+                state: '',
+                district: '',
+                city: '',
+               pincode: '',
+              phoneNumber: '',
+               bloodGroup: '',
+           });
+            setIsSubmitted(true);
+            setTimeout(() => {
+                setIsSubmitted(false);
+            }, 1500);
+            console.log(result.message);
+        }
         
-        // catch (error){
-        //     console.log(error);
+        catch (error){
+            console.log(error);
 
-        // }
-        // console.log('Form data:', formData);
-
+         }
+         console.log('Form data:', formData);
     };
 
 

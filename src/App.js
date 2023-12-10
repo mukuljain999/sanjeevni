@@ -12,7 +12,11 @@ import Login from './components/LogIn.jsx';
 import DonorRegistration from './components/DonorRegistration.jsx';
 
 import DonateBlood from './components/DonateBlood.jsx';
+
 import { DonorProfile } from "./components/DonorProfile.jsx";
+
+import Admin from "./components/admin/Admin.jsx";
+
 
 
 
@@ -34,7 +38,11 @@ function App() {
         <Route path="/log-in" element={<Login />}></Route>
         <Route path="/register" element={<DonorRegistration/>} />
         <Route path="/donate-blood" element={<DonateBlood/>}></Route>
+
         <Route path="/donor-profile" element={<DonorProfile/>}></Route>
+
+        <Route path="/admin" element={<Admin/>}></Route>
+
 
       </Routes>
 

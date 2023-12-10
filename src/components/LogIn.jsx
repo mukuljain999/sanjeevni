@@ -54,7 +54,7 @@ function LogIn() {
         try {
             const result = await adminLogin(formData);
             localStorage.setItem("token", result.token);
-            navigate("/contact-us");
+            navigate("/admin");
         } catch (error) {
             console.log(error);
             setLoginError(true);

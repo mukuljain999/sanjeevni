@@ -18,3 +18,14 @@ export async function saveDonor(donorData){
         console.log(error);
     }
 }
+
+
+export async function fetchDonors(){
+    try {
+        const response=await axios.get(`${BASE_URL}/donor`);
+        console.log(response);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}

@@ -12,7 +12,7 @@ export async function donorLogin(credentials){
 
 export async function updateDonor(updatedData){
     try {
-        const response = await axios.put(`${BASE_URL}/donor/${updatedData.email}`);
+        const response = await axios.put(`${BASE_URL}/donor/${updatedData.email}`,{headers:{'Authorization':`Bearer ${getToken()}`}});
         return response.date;
     } catch (error) {
         console.log(error);
@@ -43,7 +43,7 @@ export async function getDonorProfile(donorEmail){
 
 export async function fetchDonors(){
     try {
-        const response=await axios.get(`${BASE_URL}/donor`);
+        const response=await axios.get(`${BASE_URL}/donor`,{headers:{'Authorization':`Bearer ${getToken()}`}});
         console.log(response);
         return response.data;
     } catch (error) {

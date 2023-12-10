@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import './App.css';
+//import '../src/css/globalStyle.css'
 import {NavigationBar} from './components/NavigationBar';
 import { Home } from './components/Home';
 
@@ -11,6 +12,7 @@ import Login from './components/LogIn.jsx';
 import DonorRegistration from './components/DonorRegistration.jsx';
 
 import DonateBlood from './components/DonateBlood.jsx';
+import { DonorProfile } from "./components/DonorProfile.jsx";
 
 
 
@@ -32,7 +34,7 @@ function App() {
         <Route path="/log-in" element={<Login />}></Route>
         <Route path="/register" element={<DonorRegistration/>} />
         <Route path="/donate-blood" element={<DonateBlood/>}></Route>
-        
+        <Route path="/donor-profile" element={<DonorProfile/>}></Route>
 
       </Routes>
 

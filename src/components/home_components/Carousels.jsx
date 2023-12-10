@@ -10,7 +10,7 @@ const Carousels = () => {
     <Container style={{ width: '100%', overflow: 'hidden' }}>
         <Row height={500}>
             <Col lg={12}>
-                <Carousel fade style={{ height: '300px' }}>
+                <Carousel style={{ height: '300px' }}>
                 <Carousel.Item>
                     <img src={sliderimage1} className="d-block w-100"></img>
                     <Carousel.Caption>

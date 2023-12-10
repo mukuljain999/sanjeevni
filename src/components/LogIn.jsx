@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Form, Row, Button, Container, Card } from 'react-bootstrap';
+import { Form, Row, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../css/LogIn.css';
 import { useNavigate } from 'react-router-dom';
-import { donorLogin } from '../Services/DonorService';
+import { donorLogin, getDonorProfile } from '../Services/DonorService';
 import { adminLogin } from '../Services/AdminService';
-
+import { receiveProfile } from './DonorProfile.jsx';
 
 
 function LogIn() {
@@ -27,22 +27,34 @@ function LogIn() {
     const handleDonorSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log(formData);
             const result = await donorLogin(formData);
             console.log(result);
             localStorage.setItem("token", result.token);
-            navigate("/");
+            localStorage.setItem("email",result.email);
+            directingToDonerProfile(result.email);
         } catch (error) {
             console.log(error);
             setLoginError(true);
         }
     };
 
+    const directingToDonerProfile = async (email)=>{
+        console.log(email);
+        const profile = await getDonorProfile(email);
+        console.log(profile);
+        if (profile != null) {
+            receiveProfile(profile);
+            navigate('/donor-profile');
+        }
+    }
+
     const handleAdminSubmit = async (e) => {
         e.preventDefault();
         try {
             const result = await adminLogin(formData);
             localStorage.setItem("token", result.token);
-            navigate("/");
+            navigate("/contact-us");
         } catch (error) {
             console.log(error);
             setLoginError(true);

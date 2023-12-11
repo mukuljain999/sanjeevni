@@ -1,58 +1,89 @@
-import { Container,Button } from "react-bootstrap";
+import { Container, Button, Modal, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
-
 import Table from 'react-bootstrap/Table';
-import { fetchStocks } from "../../Services/AdminService";
+import { fetchStocks, updateStockCount } from "../../Services/AdminService";
 
 export function AdminBloodStock() {
-    const [stocks,setStocks]=useState([]);
-    
-    async function populateStocksState(){
+    const [stocks, setStocks] = useState([]);
+    const [selectedBlood, setSelectedBlood] = useState({});
+    const [showModal, setShowModal] = useState(false);
+    const [newCount, setNewCount] = useState(0);
+
+    async function populateStocksState() {
         try {
             const data = await fetchStocks();
-            console.log(data)
-            setStocks(data)
+            setStocks(data.Stock)
         } catch (error) {
             console.log(error);
         }
     }
-    useEffect(()=>{
+
+    useEffect(() => {
         populateStocksState();
-        console.log(stocks[0]);
-    },[]);
-    
+    }, []);
+
+
+    const handleEditClick = (blood) => {
+        setSelectedBlood(blood);
+        setShowModal(true);
+    }
+
+    const handleUpdateCount = async () => {
+        try {
+            const updatedStock = { ...selectedBlood, inStock: newCount };
+            await updateStockCount(updatedStock);
+            setShowModal(false);
+            populateStocksState();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
-
-        <Container >
-
-            <h1 className="mt=5">Blood stock</h1>
+        <Container>
+            <h1 className="mt-5">Blood stock</h1>
             <Table striped responsive bordered hover variant="light">
                 <thead>
                     <tr>
-                        
                         <th>Blood Type</th>
                         <th>Number of Units</th>
-
+                        <th>Edit</th>
                     </tr>
                 </thead>
-                <tbody> {/* we have create a map which fetch every request form donor table */}
-                    
+                <tbody>
                     {stocks.map((blood) => (
-                        <tr >
-                           
-                            <td>{blood._id}</td>
-                            <td>{blood.count}</td>
+                        <tr key={blood.bloodGroup}>
+                            <td>{blood.bloodGroup}</td>
+                            <td>{blood.inStock}</td>
                             <td>
-                                <Button variant="info" >Edit</Button>
-
+                                <Button variant="info" onClick={() => handleEditClick(blood)}>Edit</Button>
                             </td>
                         </tr>
                     ))}
-
                 </tbody>
             </Table>
-        </Container >
 
-
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Blood Count for {selectedBlood.bloodGroup}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group controlId="newCount">
+                            <Form.Label>New Count</Form.Label>
+                            <Form.Control
+                                type="number"
+                                value={newCount}
+                                onChange={(e) => setNewCount(e.target.value)}
+                            />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
+                    <Button variant="primary" onClick={handleUpdateCount}>Save Changes</Button>
+                </Modal.Footer>
+            </Modal>
+        </Container>
     );
-}    
+}

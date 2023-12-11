@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import '../css/DonateBlood.css'
 import { saveAppointment } from '../Services/AppointmentService';
+import { getEmail } from '../utils/TokenUtils';
 
 // Import your CSS file for component styling
 
@@ -20,7 +21,6 @@ const DonateBlood = () => {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        // console.log(name, value);
         setAppointmentData({ ...appointmentData, [name]: value });
         console.log(appointmentData);
     };

@@ -2,6 +2,7 @@ import { Container, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
 import { fetchDonors } from "../../Services/DonorService";
+import { updateDonorAppointment } from "../../Services/AppointmentService";
 
 export function AdminRequestList() {
     const [request, setRequest] = useState([]);
@@ -9,7 +10,7 @@ export function AdminRequestList() {
     async function populateDonorsState() {
         try {
             const data = await fetchDonors();
-            console.log(data)
+            console.log(data.appointmentGender);
             setRequest(data.Donor)
         } catch (error) {
             console.log(error);
@@ -18,6 +19,16 @@ export function AdminRequestList() {
     useEffect(() => {
         populateDonorsState();
     }, []);
+
+    const approveAppointment= async (donor)=>{
+        try {
+            await updateDonorAppointment(donor);
+            populateDonorsState();
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
 
         <Container >
@@ -37,22 +48,21 @@ export function AdminRequestList() {
                 </thead>
                 <tbody> {/* we have create a map which fetch every request form donor table */}
                     {
-                        request.map((d) => {
-                            console.log(d);
-                            if (d.appointmentName !== '') {
+                        request.map((donor) => {
+                            if (donor.appointmentName !== '') {
                                 return (
 
-                                    <tr>
+                                    <tr key={donor.email}>
 
-                                        <td>{d.name}</td>
-                                        <td>{d.appointmentName}</td>
-                                        <td>{d.appointmentEmail}</td>
-                                        <td>{d.appointmentDate}</td>
-                                        <td>{d.appointmentGender}</td>
-                                        <td>{d.appointmentPhoneNumber}</td>
-                                        <td>{d.appointmentTime}</td>
+                                        <td>{donor.name}</td>
+                                        <td>{donor.appointmentName}</td>
+                                        <td>{donor.appointmentEmail}</td>
+                                        <td>{donor.appointmentDate}</td>
+                                        <td>{donor.appointmentGender}</td>
+                                        <td>{donor.appointmentPhoneNumber}</td>
+                                        <td>{donor.appointmentTime}</td>
                                         <td>
-                                            <Button variant="success" >Approve</Button>
+                                            <Button variant="success" onClick={()=>approveAppointment(donor)} >{donor.appointmentStatus ? "Approved" : "Approve"}</Button>
                                             
                                         </td>
                                     </tr>

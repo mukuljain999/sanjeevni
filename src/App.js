@@ -17,7 +17,7 @@ import { DonorProfile } from "./components/DonorProfile.jsx";
 
 import Admin from "./components/admin/Admin.jsx";
 
-
+import { DonorEditForm } from "./components/DonorEditForm.jsx";
 
 
 
@@ -43,7 +43,7 @@ function App() {
 
         <Route path="/admin" element={<Admin/>}></Route>
 
-
+        <Route path="/edit/:email" element={ <DonorEditForm></DonorEditForm> }></Route>
       </Routes>
 
 

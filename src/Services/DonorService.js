@@ -10,10 +10,10 @@ export async function donorLogin(credentials){
         return response.data;
 }
 
-export async function updateDonor(updatedData){
+export async function updateDonor(updatedData,email){
     try {
-        const response = await axios.put(`${BASE_URL}/donor/${updatedData.email}`,{headers:{'Authorization':`Bearer ${getToken()}`}});
-        return response.date;
+        const response = await axios.put(`${BASE_URL}/donor/${email}`,updatedData,{headers:{'Authorization':`Bearer ${getToken()}`}});
+        return response.data;
     } catch (error) {
         console.log(error);
     }

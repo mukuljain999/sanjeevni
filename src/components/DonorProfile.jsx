@@ -95,6 +95,10 @@ export function DonorProfile() {
                             <th>Appointment Time</th>
                             <td>{profile.appointmentTime}</td>
                         </tr>
+                        <tr>
+                            <th>Appointment status</th>
+                            <td>{profile.appointmentStatus ? "Approved" : "Yet to be Approved"}</td>
+                        </tr>
                     </Table>
 
                     <Button variant="info"  onClick={()=>{navigate(`/edit/${profile.email}`)}}>Update Profile</Button>{' '}

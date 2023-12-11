@@ -96,7 +96,7 @@ export function DonorProfile() {
                             <td>{profile.appointmentTime}</td>
                         </tr>
                     </Table>
-                    <Button variant="danger">Delete Profile</Button>{' '}
+
                     <Button variant="info"  onClick={()=>{navigate(`/edit/${profile.email}`)}}>Update Profile</Button>{' '}
                     <Offcanvas show={show2} onHide={handleClose2} placement="end">
                         <Offcanvas.Header closeButton>
@@ -139,8 +139,7 @@ export function DonorProfile() {
                         </Card.Body>
                         <ListGroup className="list-group-flush">
                             <ListGroup.Item>Name : {profile.name} </ListGroup.Item>
-                            <ListGroup.Item>Date : </ListGroup.Item>
-                            <ListGroup.Item>Type : </ListGroup.Item>
+
                         </ListGroup>
                         <Card.Body>
                             <Button variant="danger">Donate Again</Button>{' '}
@@ -163,7 +162,7 @@ export function DonorProfile() {
                             <ListGroup.Item>Expiry : </ListGroup.Item>
                         </ListGroup>
                         <Card.Body>
-                            <Button variant="success">Redeem</Button>{' '}
+                            <Button variant="white">Redeem</Button>{' '}
                         </Card.Body>
                     </Card>
                 </Col>

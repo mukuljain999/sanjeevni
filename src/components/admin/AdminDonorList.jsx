@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Container,Button } from "react-bootstrap";
-
+import { useNavigate } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import { fetchDonors } from "../../Services/DonorService";
 
 export function AdminDonorList() {
 
     const [donors,setDonors]=useState([]);
-    
+    const navigate = useNavigate();
     async function populateDonorsState(){
         try {
             const data = await fetchDonors();
@@ -46,7 +46,7 @@ export function AdminDonorList() {
                                     <td>{d.gender}</td>
                                     <td>{d.email}</td>
                                     <td>
-                                    <Button variant="info" >Edit</Button>&nbsp; &nbsp; &nbsp;
+                                    <Button variant="info" onClick={()=>{navigate(`/edit/${d.email}`)}} >Edit</Button>&nbsp; &nbsp; &nbsp;
                                     <Button variant="danger" >Delete</Button>
                                     </td>
                                 </tr>

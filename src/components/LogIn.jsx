@@ -77,6 +77,7 @@ function LogIn() {
             </div>
 
             <div className="login-container">
+                {loginError && <p className="text-danger">Invalid credentials. Please try again.</p>}
                 <Form className="login-form" onSubmit={isAdmin ? handleAdminSubmit : handleDonorSubmit}>
                     <Row>
                         <Form.Group controlId="formName" className="mb-3">

@@ -1,34 +1,56 @@
 import { useEffect, useState } from "react";
-import { Container,Button } from "react-bootstrap";
+import { Container, Button, Modal } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import { fetchDonors } from "../../Services/DonorService";
+import { deleteDonor, fetchDonors } from "../../Services/DonorService";
 
 export function AdminDonorList() {
 
-    const [donors,setDonors]=useState([]);
+    const [donors, setDonors] = useState([]);
+    const [showDialog, setShowDialog] = useState(false);
+    const [selectedEmail, setSelectedEmail] = useState("");
+
+
     const navigate = useNavigate();
-    async function populateDonorsState(){
+
+    const openModalDialog = () => {
+        setShowDialog(true);
+    }
+    const closeModalDialog = () => {
+        setShowDialog(false);
+    }
+
+    async function populateDonorsState() {
         try {
             const data = await fetchDonors();
-            console.log(data)
             setDonors(data.Donor)
         } catch (error) {
             console.log(error);
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         populateDonorsState();
-    },[]);
+    }, []);
+
+    const handleDonorDelete = async () => {
+        try {
+            await deleteDonor(selectedEmail);
+            populateDonorsState();
+            closeModalDialog();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
 
         <Container >
 
             <h1 className="mt=5">All donor list</h1>
-            {donors.length !== 0 ?  <Table striped  responsive bordered hover variant="light">
+            {donors.length !== 0 ? <Table striped responsive bordered hover variant="light">
                 <thead>
                     <tr>
-                        
+
                         <th>Name</th>
                         <th>DOB</th>
                         <th>Gender</th>
@@ -37,17 +59,20 @@ export function AdminDonorList() {
                 </thead>
                 <tbody> {/* we have create a map which fetch every request form donor table */}
                     {
-                        donors.map((d)=>{
-                            return(
+                        donors.map((donor) => {
+                            return (
                                 <tr>
-                                    
-                                    <td>{d.name}</td>
-                                    <td>{d.dateOfBirth}</td>
-                                    <td>{d.gender}</td>
-                                    <td>{d.email}</td>
+
+                                    <td>{donor.name}</td>
+                                    <td>{donor.dateOfBirth}</td>
+                                    <td>{donor.gender}</td>
+                                    <td>{donor.email}</td>
                                     <td>
-                                    <Button variant="info" onClick={()=>{navigate(`/edit/${d.email}`)}} >Edit</Button>&nbsp; &nbsp; &nbsp;
-                                    <Button variant="danger" >Delete</Button>
+                                        <Button variant="info" onClick={() => { navigate(`/edit/${donor.email}`) }} >Edit</Button>&nbsp; &nbsp; &nbsp;
+                                        <Button variant="danger" onClick={() => {
+                                            openModalDialog();
+                                            setSelectedEmail(donor.email);
+                                        }}>Delete</Button>
                                     </td>
                                 </tr>
                             )
@@ -55,7 +80,25 @@ export function AdminDonorList() {
                     }
 
                 </tbody>
-            </Table>: <p>No donors found....</p>} 
+            </Table> : <p>No donors found....</p>}
+
+            <Modal show={showDialog} onHide={closeModalDialog}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Confirmation</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Do you really want to delete this Donor {selectedEmail}?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="success" onClick={()=>{
+                        handleDonorDelete();
+                    }}>
+                        Yes
+                    </Button>
+                    <Button variant="danger" onClick={closeModalDialog}>
+                        No
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
         </Container >
 
 

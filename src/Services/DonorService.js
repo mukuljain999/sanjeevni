@@ -50,3 +50,12 @@ export async function fetchDonors(){
         console.log(error);
     }
 }
+
+export async function deleteDonor(email){
+    try {
+        const response=await axios.delete(`${BASE_URL}/donor/${email}`,{headers:{'Authorization':`Bearer ${getToken()}`}});
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}

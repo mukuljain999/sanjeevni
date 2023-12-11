@@ -144,13 +144,17 @@ const DonorRegistration = () => {
                         <Col>
                             <Form.Group controlId="bloodGroup" className="mb-3">
                                 <Form.Label className="loginLabel">Blood Group:</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Enter your blood group"
-                                    name="bloodGroup"
-                                    value={formData.bloodGroup}
-                                    onChange={handleInputChange}
-                                />
+                                <Form.Control as="select" name="bloodGroup" value={formData.bloodGroup} onChange={handleInputChange}>
+                                    <option value="">Select</option>
+                                    <option value="A+">A+</option>
+                                    <option value="B+">B+</option>
+                                    <option value="O+">O+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B-">B-</option>
+                                    <option value="O-">O-</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="AB-">AB-</option>
+                                </Form.Control>
                             </Form.Group>
                         </Col>
                     </Row>

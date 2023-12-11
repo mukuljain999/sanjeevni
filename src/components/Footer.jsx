@@ -1,20 +1,30 @@
 import React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faYoutube, faLinkedin, faFacebook, faXTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faFacebook, faXTwitter, faInstagram,faGithub  } from '@fortawesome/free-brands-svg-icons';
 
 
 export const Footer = () => {
     return (
         <>
         <footer style={footerStyle}>
-            <p>&copy; 2023 Sanjeevani</p>
-            <FontAwesomeIcon icon={faFacebook} style={iconStyle} />
-            <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
-            <FontAwesomeIcon icon={faYoutube} style={iconStyle} />
-            <FontAwesomeIcon icon={faXTwitter} style={iconStyle}/>
-            <FontAwesomeIcon icon={faInstagram} style={iconStyle} />
-        </footer>
+                <p>&copy; 2023 Sanjeevani</p>
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faFacebook} style={iconStyle} />
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faLinkedin} style={iconStyle} />
+                </a>
+                <a href="https://github.com/mukuljain999/sanjeevni/" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faGithub} style={iconStyle}/>
+                </a>
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faXTwitter} style={iconStyle}/>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faInstagram} style={iconStyle} />
+                </a>
+            </footer>
         </>
         
 

@@ -1,6 +1,7 @@
 // Carousels.jsx
 import sliderimage1 from '../../images/sliderA.jpg'
-import sliderimage2 from '../../images/sliderB.webp'
+import sliderimage2 from '../../images/sliderC.jpg'
+import sliderimage3 from '../../images/sliderD.jpg'
 import React from 'react';
 import {Container,Row,Col} from 'react-bootstrap';
 import Carousel from 'react-bootstrap/Carousel';
@@ -19,6 +20,12 @@ const Carousels = () => {
                 </Carousel.Item>
                 <Carousel.Item>
                 <img src={sliderimage2} className="d-block w-100"></img>
+                    <Carousel.Caption>
+                    
+                    </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                <img src={sliderimage3} className="d-block w-100"></img>
                     <Carousel.Caption>
                     
                     </Carousel.Caption>

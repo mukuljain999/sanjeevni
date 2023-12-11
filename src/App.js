@@ -18,6 +18,7 @@ import { DonorProfile } from "./components/DonorProfile.jsx";
 import Admin from "./components/admin/Admin.jsx";
 
 import { DonorEditForm } from "./components/DonorEditForm.jsx";
+import { PrivateRoute } from "./components/PrivateRoute.jsx";
 
 
 
@@ -37,13 +38,13 @@ function App() {
         <Route path="/contact-us" element={<ContactUs />}></Route>
         <Route path="/log-in" element={<Login />}></Route>
         <Route path="/register" element={<DonorRegistration/>} />
-        <Route path="/donate-blood" element={<DonateBlood/>}></Route>
+        <Route path="/donate-blood" element={<PrivateRoute><DonateBlood/></PrivateRoute>}></Route>
 
-        <Route path="/donor-profile" element={<DonorProfile/>}></Route>
+        <Route path="/donor-profile" element={<PrivateRoute><DonorProfile/></PrivateRoute>}></Route>
 
-        <Route path="/admin" element={<Admin/>}></Route>
+        <Route path="/admin" element={<PrivateRoute><Admin/></PrivateRoute>}></Route>
 
-        <Route path="/edit/:email" element={ <DonorEditForm></DonorEditForm> }></Route>
+        <Route path="/edit/:email" element={ <PrivateRoute><DonorEditForm></DonorEditForm> </PrivateRoute>}></Route>
       </Routes>
 
 

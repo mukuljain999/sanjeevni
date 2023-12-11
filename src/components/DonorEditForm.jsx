@@ -188,7 +188,7 @@ export function DonorEditForm() {
                 )}
 
                 <Row className="mt-3">
-                    <Col lg={4}>{isSubmitted ? <Alert variant="success">Student Registered</Alert> : null}</Col>
+                    <Col lg={4}>{isSubmitted ? <Alert variant="success">Donor Updated</Alert> : null}</Col>
                 </Row>
             </Container>
 

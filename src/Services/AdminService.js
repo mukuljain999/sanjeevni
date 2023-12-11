@@ -18,3 +18,12 @@ export async function fetchStocks() {
     //console.log("bolod shotl"+response.data);
     return response.data;
 }
+
+
+export async function updateStockCount(updatedStock) {
+            console.log(updatedStock);
+            console.log(updatedStock.inStock);
+    const response = await axios.put(`${BASE_URL}/bloodstock/${updatedStock.bloodGroup}`,updatedStock, {headers:{'Authorization':`Bearer ${getToken()}`}});
+    console.log(response);
+    return response.data;
+}
